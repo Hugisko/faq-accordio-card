@@ -1,0 +1,206 @@
+*, 
+*::before, 
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+:root {
+--Very-dark-desaturated-blue: hsl(238, 29%, 16%);
+--Soft-red: hsl(14, 88%, 65%);
+--Bg-Soft-violet: hsl(273, 75%, 66%);
+--Bg-Soft-blue: hsl(240, 73%, 65%);
+--Very-dark-grayish-blue: hsl(237, 12%, 33%);
+--Dark-grayish-blue: hsl(240, 6%, 50%);
+--Light-grayish-blue: hsl(240, 5%, 91%);
+}
+
+html, body {
+    height: 100%;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--Light-grayish-blue);
+}
+
+body {
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: .85rem;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    background-image: linear-gradient(var(--Bg-Soft-violet),var(--Bg-Soft-blue));
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: grid;
+    place-items: center;
+    grid-template-rows: 1fr auto;
+    min-height: 100%;
+}
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    background-color:white;
+    position: relative;
+    padding: 0 1rem;
+    margin: 1rem;
+    margin-top: 10rem;
+    max-width: 850px;
+}
+
+.accordion-image {
+    width: 75%;
+    background: url("./images/bg-pattern-mobile.svg") no-repeat top center;
+    background-size: contain;
+}
+
+.mobile {
+    width: 100%;
+    transform: translateY(-60%);
+}
+
+.faq {
+    display: flex;
+    flex-direction: column;
+    margin: -4rem .5rem 3rem; 
+}
+
+.question {
+    color: var(--Very-dark-grayish-blue);
+    font-weight: 400;
+    cursor: pointer;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.question::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    background: url("./images/icon-arrow-down.svg");
+    right: 0;
+    top: 35%;
+    width: 10px;
+    height: 7px;
+    transition: all 0.2s ease-in;
+}
+
+
+@media (pointer: fine) and (hover: hover){
+    .question:hover {
+        color: var(--Soft-red);
+    }
+}
+
+.open {
+    font-weight: 700;
+}
+
+.open::after {
+    transform: rotate(180deg);
+    transition: all 0.2s ease-in;
+}
+
+.answer {
+    color: var(--Dark-grayish-blue);
+    padding-right: .5rem;
+    height: 0;
+    overflow: hidden;
+    transition: all .1s ease-in-out;
+}
+
+.expand {
+    transition: all .1s ease-in-out;
+    padding-bottom: 1rem;
+    height: auto;
+}
+
+h1 {
+    text-align: center;
+    color: var(--Very-dark-desaturated-blue);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--Light-grayish-blue);
+}
+
+footer {
+    margin-top: auto;
+    font-size: 1rem;
+    color: var(--Light-grayish-blue);
+}
+
+@media (min-width: 700px) {
+
+    .accordion-image {
+        display: none;
+    }
+
+    .accordion{
+        margin: 0 3rem;
+        padding: 3rem 5rem;
+        flex-direction: row;
+        padding-left: 50%;
+        background:
+        url("./images/illustration-woman-online-desktop.svg") bottom 3.1rem left -5rem no-repeat,
+        url("./images/bg-pattern-desktop.svg") bottom -8rem left -30rem no-repeat;
+        background-size: 430px, 830px;
+        background-color: white;
+    }
+
+    .accordion::before{
+        content: "";
+        background: url(images/illustration-box-desktop.svg) no-repeat;
+        width: 140px;
+        height: 180px;
+        position: absolute;
+        top: 37%;
+        left: -11%;
+        animation: rotation 2s infinite linear;
+    }
+
+    @keyframes rotation{
+        from {
+            transform: translateX(0);
+        }
+        25% {
+            transform: translateX(-20%);
+        }
+        50% {
+            transform: translateX(0);
+        }
+        75% {
+            transform: translateX(20%);
+        }
+    }
+
+    .faq {
+        margin: 0;
+    }
+
+    h1 {
+        text-align: start;
+    }
+}
